@@ -4,6 +4,8 @@ fn main() {
     shadowing();
     scopes();
     unused_var();
+    destructuring();
+    destructuring_assignments();
 }
 
 #[allow(unused_variables)]
@@ -45,4 +47,24 @@ fn shadowing() {
     let y = "I can also be bound to text!";
 
     println!("Shadowing Success! {} {}", x, y);
+}
+
+fn destructuring() {
+    let (mut x, y) = (1, 2);
+    x += 2;
+
+    assert_eq!(x, 3);
+    assert_eq!(y, 2);
+
+    println!("Destructuring Success!");
+}
+
+// Introduced in Rust 1.59: You can now use tuple, slice, and struct patterns as the left-hand side of an assignment.
+fn destructuring_assignments() {
+    let (x, y);
+    (x, ..) = (3, 4);
+    [.., y] = [1, 2];
+    assert_eq!([x, y], [3, 2]);
+
+    println!("Destructuring Assignments Success!");
 }
