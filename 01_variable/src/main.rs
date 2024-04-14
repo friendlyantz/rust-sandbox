@@ -1,6 +1,7 @@
 // Fix the error below with least amount of modification to the code
 fn main() {
     mutation();
+    shadowing();
     scopes();
     unused_var();
 }
@@ -27,4 +28,21 @@ fn mutation() {
 
     assert_eq!(x, 5);
     println!("Mutation Success!");
+}
+
+fn shadowing() {
+    let mut x: i32 = 1;
+    println!("{x}");
+    x = 7;
+    println!("{x}");
+    // Shadowing and re-binding
+    let mut x = 2;
+    x += 3;
+
+    let y = 4;
+    println!("{y}");
+    // Shadowing
+    let y = "I can also be bound to text!";
+
+    println!("Shadowing Success! {} {}", x, y);
 }
