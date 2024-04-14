@@ -10,5 +10,7 @@ sandbox for rust experiments and learning
 
 ```sh
 cargo new hello-rust
+# or
+cargo new 02_types --name types
 ```
 
